@@ -9,8 +9,14 @@ spl_autoload_register(function($className) {
 
 
 define('PROJECT_ROOT',__DIR__);
-
-$url = explode('/',$_SERVER['REQUEST_URI']);
+$url = $_SERVER['REQUEST_URI'];
+$parts = parse_url($url);
+$query = [];
+if(isset($parts['query'])){
+  parse_str($parts['query'], $query);
+}
+$url = strtok($url, '?');
+$url = explode('/',$url);
 
 
 $controllers = [
@@ -26,7 +32,7 @@ foreach ($controllers as $controller){
   if($action !== null){
     $controller = new $controller();
     $functionName = 'do' . ucfirst($action);
-    echo $controller->$functionName($url);
+    echo $controller->$functionName($url,$query);
 
     break;
   }

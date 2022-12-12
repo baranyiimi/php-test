@@ -40,4 +40,33 @@ class UserModel extends AbstractModel{
             return $user;
         }
     }
+
+    public function getOtherUsers(int $userId)
+    {
+        $sql = "SELECT id, username FROM users where id<>?";
+
+        $result = $this->query($sql,[$userId]);
+        $arr = [];
+        foreach($result as $row){
+            $user = new User;
+            $user->setId($row["id"]);
+            $user->setUserName($row["username"]);
+            $arr[] = $user;
+        }
+        return $arr;
+    }
+
+    public function getUserById(int $id){
+        $sql = "SELECT * FROM users where id=?";
+
+        $result = $this->query($sql,[$id]);
+        if($result[0]){
+            $user = new User;
+            $user->setId($result[0]["id"]);
+            $user->setUserName($result[0]["username"]);
+            $user->setEmail($result[0]["email"]);
+            $user->setPassword($result[0]["password"]);
+            return $user;
+        }
+    }
 }

@@ -10,7 +10,7 @@
                                 <input type="submit">
                             </form>
                         </div>
-                        <a href="/edit" class="btn btn-primary">Új fájl</a>
+                        <a href="/newfile" class="btn btn-primary">Új fájl</a>
                     </div>
                 </div>
             </div>
@@ -28,13 +28,17 @@
                                             <th scope="col">Létrehozás ideje</th>
                                             <th scope="col">Módosítás ideje</th>
                                             <th scope="col">Küldő</th>
+                                            <th scope="col">Módosítás</th>
+                                            <th scope="col">Küldés</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         {{template_table}}
                                     </tbody>
                                 </table>
-                        </div>
+                            </div>
+                            <a href="{{template_before_button}}" class="btn btn-primary">Hátra</a>
+                            <a href="{{template_after_button}}" class="btn btn-primary">Előre</a>
                     </div>
                 </div>
             </div>

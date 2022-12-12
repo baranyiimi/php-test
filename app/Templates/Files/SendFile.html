@@ -1,0 +1,27 @@
+<section class="vh-100" style="background-color: #eee;">
+    <div class="container h-100">
+        <div class="row d-flex justify-content-center align-items-centers">
+            <div class="col-lg-12 col-xl-11">
+                <div class="card text-black" style="border-radius: 25px;">
+                    <div class="card-body p-md-5">
+                        <div class="row justify-content-center">
+                            <form action="/send" method="POST">
+                                <div class="form-group">
+                                    <label for="id">ID</label>
+                                    <input type="text" class="form-control" id="id"
+                                        placeholder="id" name="file_id" readonly value="{{template_id}}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="user">Címzett</label>
+                                    <select name="user_id" id="user">
+                                        {{template_users}}
+                                      </select>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</section>
